@@ -1,0 +1,223 @@
+# setup for Elmer simulation / solvers
+
+# Evrything at pyelmer/examples
+
+
+axisymmetric_steady:
+  Max Output Level: 4
+  Coordinate System: Axi Symmetric
+  Simulation Type: Steady state
+  Steady State Max Iterations: 15
+  Output File: case.result
+  Output Intervals: 0
+
+
+HeatSolver:
+  Equation: 'Heat Equation'
+  Procedure: '"HeatSolve" "HeatSolver"'
+  Variable: '"Temperature"'
+  Variable Dofs: 1
+  Calculate Loads: True
+  Exec Solver: Always
+  Nonlinear System Convergence Tolerance: 1.0e-5
+  Nonlinear System Max Iterations: 1000
+  Nonlinear System Relaxation Factor: 0.7
+  Steady State Convergence Tolerance: 1.0e-5 #1.0e-6
+  Stabilize: True  # Necessary in convection-dominated systems (models manual p.17) --> decreases simulation duration
+  Optimize Bandwidth: True
+  Linear System Solver: Iterative  
+  Linear System Iterative Method: BiCGStab
+  Linear System Max Iterations: 10000
+  Linear System Preconditioning: ILU
+  Linear System Precondition Recompute: 1
+  Linear System Convergence Tolerance: 1.0e-09
+  Linear System Abort Not Converged: True
+  Linear System Residual Output: 1
+  Smart Heater Control After Tolerance: 1.0e-2
+  Update Gebhart Factors : True #for variable emissivities
+
+MagnetoDynamics2DHarmonic:
+  Equation: MgDyn2DHarmonic
+  Procedure: '"MagnetoDynamics2D" "MagnetoDynamics2DHarmonic"'
+  Variable: 'Potential[Potential Re:1 Potential Im:1]'
+  Variable Dofs: 2
+  Exec Solver: Always
+  Nonlinear System Convergence Tolerance: 1.0e-5
+  Nonlinear System Max Iterations: 1000
+  Nonlinear System Relaxation Factor: 0.7
+  Steady State Convergence Tolerance: 1.0e-5 # 1.0e-6
+  Stabilize: True
+  Optimize Bandwidth: True
+  Linear System Solver: Iterative  
+  Linear System Iterative Method: BiCGStab
+  Linear System Max Iterations: 1000
+  Linear System Preconditioning: ILU
+  Linear System Precondition Recompute: 1
+  Linear System Convergence Tolerance: 1.0e-9
+  Linear System Abort Not Converged: True
+  Linear System Residual Output: 1
+
+
+MagnetoDynamicsCalcFields:
+  Equation: CalcFields
+  Procedure: '"MagnetoDynamics" "MagnetoDynamicsCalcFields"'
+  Potential Variable: Potential
+  Calculate Joule Heating: True
+  Calculate Magnetic Field Strength: True
+  Calculate Electric Field: True
+  Calculate Current Density: True
+  Calculate JxB: Logical True  
+  Exec Solver: Always
+  Calculate Nodal Fields: Logical False
+  Calculate Elemental Fields: Logical True
+
+StressSolver:
+  Exec Solver : Always
+  Equation : Linear elasticity
+  Procedure : '"StressSolve" "StressSolver"'
+  Variable : '"DisplacementCrystal"'
+  Variable DOFs : Integer 2
+  #! hierarchial p-element base (alternative for higher-order)
+  #Element : p:3
+
+  Displace Mesh : Logical False
+  Calculate Stresses : Logical True
+
+  Linear System Solver : Direct
+  Linear System Symmetric : Logical True
+  Linear System Scaling : Logical False
+  Linear System Iterative Method : BiCGStab
+  Linear System Direct Method : UMFPACK
+  Linear System Convergence Tolerance : 1.0e-9
+  Linear System Max Iterations : 200
+  Linear System Preconditioning : ILU2
+
+  Nonlinear System Convergence Tolerance : Real 1.0e-7
+  Nonlinear System Max Iterations : Integer 3
+  Nonlinear System Relaxation Factor : Real 1
+
+  Steady State Convergence Tolerance: 1.0e-5 # 1.0e-6
+  Optimize Bandwidth : True
+
+
+
+
+ResultOutputSolver:
+  Exec Solver: 'after saving'
+  Equation: '"ResultOutput"'
+  Procedure: '"ResultOutputSolve" "ResultOutputSolver"'
+  VTU Format: True
+  Save Geometry Ids: 'Logical True'
+  # Scalar Field 1: '"Temperature"'
+  # Scalar Field 2: '"Heat Conductivity"'
+  # Scalar Field 3: '"Temperature Loads"'
+  # Scalar Field 4: '"Potential"'
+  # Scalar Field 5: '"Joule Heating"'
+  # Scalar Field 6: '"Magnetic Flux Density"'
+  # Scalar Field 7: '"Phase Surface"'
+  # Scalar Field 8: '"Mesh Update"'
+  # Scalar Field 9: '"Mesh Velocity"'
+
+SteadyPhaseChange:
+  Equation: PhaseSurface
+  Variable: '"PhaseSurface"'
+  Procedure: '"SteadyPhaseChange" "SteadyPhaseChange"'
+  #Internal Mesh Movement: 'Logical True'
+  Triple Point Fixed : Logical True
+  Linear System Iterative Method : Idrs
+MeshUpdate:
+  #Exec Solver: 'After timestep'
+  Equation: Mesh Update
+  Linear System Solver: Iterative
+  Linear System Iterative Method: BiCGStab
+  Linear System Preconditioning: ILU1
+  Linear System Max Iterations: 10000
+  Linear System Convergence Tolerance: 1.0e-9
+  Linear System Residual Output: 1
+  Steady State Convergence Tolerance: 1.0e-5 # 1.0e-6
+
+
+FluxSolver:
+  Exec Solver: 'After timestep'
+  Procedure: '"FluxSolver" "FluxSolver"'
+  Equation: "Flux Solver"
+  Target Variable: String "Temperature"
+  Flux Coefficient: String "Heat Conductivity"
+  Calculate Flux: Logical True
+  Calculate Grad: Logical True
+  Linear System Convergence Tolerance: 1.0e-09
+  Linear System Iterative Method: '"BiCGStab"'
+  Linear System Max Iterations: 500
+  Linear System Preconditioning: ILU
+  Linear System Residual Output: 0
+  Linear System Solver: '"Iterative"'
+  
+
+
+SaveLine:
+  Exec Solver: 'After timestep'
+  Equation: '"SaveLine"'
+  Procedure: '"SaveData" "SaveLine"'
+  Filename: '"phase-if.dat"'
+  Output Directory: './results'
+  Variable 1: temperature
+  Variable 2: temperature grad 1
+  Variable 3: temperature grad 2
+
+save_line_solver:  ## this can be used flexibly
+  Exec Solver: 'After timestep'
+  Equation: '"SaveLine"'
+  Procedure: '"SaveData" "SaveLine"'
+  Filename: '"save_lines.dat"'
+  Output Directory: './results'
+  Variable 1: temperature
+  Variable 2: temperature grad 1
+  Variable 3: temperature grad 2
+
+save_line_solver_1:  ## this can be used flexibly
+  Exec Solver: 'After timestep'
+  Equation: '"SaveLine"'
+  Procedure: '"SaveData" "SaveLine"'
+  Filename: '"save_lines.dat"'
+  Output Directory: './results'
+  Variable 1: temperature
+  Variable 2: temperature grad 1
+  Variable 3: temperature grad 2
+
+
+
+save_scalars:
+  Exec Solver: 'after saving'
+  Equation: SaveScalars
+  Procedure: '"SaveData" "SaveScalars"'
+  Filename: '"scalars.dat"'
+  Output Directory: './results'
+  
+  Operator 1 : 'diffusive flux'
+  Variable 1 : 'Temperature'
+  Coefficient 1 : 'Heat Conductivity'
+
+
+  Operator 2: int
+  Variable 2: Joule heating
+
+  Operator 3: body int
+  Variable 3: Joule heating
+  Mask Name 3: joule int crucible
+
+  Operator 4: body int
+  Variable 4: Joule heating
+  Mask Name 4: joule int top_susceptor
+
+  Operator 5: body int
+  Variable 5: Joule heating
+  Mask Name 5: joule int shield
+
+  Operator 6: body int
+  Variable 6: Joule heating
+  Mask Name 6: joule int bottom_axis
+
+  Operator 7: body int
+  Variable 7: Joule heating
+  Mask Name 7: joule int container
+

@@ -1,0 +1,28 @@
+# meshing settings
+mesh:
+  size_factor: 0.8  # use this to change mesh size globally
+  order: 2  # 2nd order is better if you want to evaluate heat fluxes
+  dimension: 3
+
+# geometry parameters
+
+melt:
+  h: 0.025  # h_0 height of melt 
+  r: 0.0225
+  # mesh_size: 0.0025
+  # # material: csi_liquid
+  # T_init: 500
+  
+crystal:
+  diameters : [0.004, 0.01, 0.01] 
+  lengths : [0.028, 0.009, 0.08] # vertical lengths from top to bottom
+  mesh_size: 0.00125
+  material: csi_solid
+  #material:   sapphire_solid
+  # material: GaO3_solid
+  T_init: 850 
+
+
+
+
+

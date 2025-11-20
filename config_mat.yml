@@ -1,0 +1,74 @@
+csi_solid:
+  Density: 4.51e+3
+  Electric Conductivity: 0.0
+  Emissivity: 0.9
+  Heat Conductivity: 7.7 # 7 times higher, original value 1.1
+  Relative Permeability: 1
+  Relative Permittivity: 1
+  Solid: 'Logical True'
+  Melting Point: 900
+  Latent Heat: 9.24e+4
+  Reference Temperature : 293.15 
+  Heat Expansion Coefficient : Real 5.0e-5 
+
+  Youngs Modulus (6, 6): |  # Units of N/m2 # Sabanskis Poster
+                  Real \
+                  25.7e9  5.4e9   5.4e9   0     0     0 \
+                  5.4e9   25.7e9  5.4e9   0     0     0 \
+                  5.4e9   5.4e9   25.7e9  0     0     0 \
+                  0       0       0       5.5e9 0     0 \
+                  0       0       0       0     5.5e9 0 \
+                  0       0       0       0     0     5.5e9 
+
+
+
+sapphire_solid:
+  Density: 3960 # kg/m3
+  Heat Conductivity: 17.5 # W/mK # 
+  Heat Capacity: 750 # J/kgK
+  Emissivity: 0.9
+  Solid: 'Logical True'
+  Melting Point: 2323 # K
+  Latent Heat: 1.407e6  # J/kg       # Effect of Crucible Location on HeatTransfer in Sapphire Crystal Growth by Heat Exchanger Method
+  Heat Expansion Coefficient (3, 3): |  #K-1 
+    Real \
+    1.35e-5    0         0        \
+    0          1.35e-5   0        \
+    0          0         1.62e-5
+  Reference Temperature : 293.15 # K
+  Youngs Modulus (6,6) : | # anisotropic   
+    Real \
+    397e9   158e9   92e9      -24e9       0       0        \
+    158e9   92e9    92e9       24e9       0       0        \
+    92e9    92e9    400e9      0          0       0        \
+    -24e9   24e9    0          94e9       0       0        \
+    0       0       0          0          94e9    -24e9    \
+    0       0       0          0          -24e9    120e9 
+
+
+
+
+GaO3_solid:
+  Density: 5950 # kg/m3
+  Heat Conductivity: 21 # W/mK # doesnt mater here 
+  Heat Capacity: 720 # J/kgK
+  Emissivity: 0.3
+  Solid: 'Logical True'
+  Melting Point: 1998 # K
+  Latent Heat: 4.6e+5 # J/kg       #
+  Heat Expansion Coefficient (3, 3): |  #K-1 
+    Real \
+    4.7e-6    0       -0.17e-6 \
+    0.0       8.3e-6   0       \
+    -0.17e-6  0.0      8.5e-6
+  Reference Temperature : 293.15 # K
+  Youngs Modulus (6,6) : | # anisotropic   # Andres Paper
+    Real \
+    285e9   135e9     135e9  0      -13e9       0        \
+    135e9   400e9     90e9   0       8e9        0        \
+    135e9   90e9      375e9  0       -35e9      0        \
+    0       0         0      50e9    0          22e9     \
+    -13e9   8e9       -35e9  0       73e9       0        \
+    0       0         0      22e9    0          93e9
+
+

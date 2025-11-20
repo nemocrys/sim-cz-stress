@@ -1,0 +1,36 @@
+
+general:
+  heat_control: True
+  heat_convection: False
+  heating_induction: True
+  phase_change: True
+
+
+boundaries:
+  crucible_outside:
+    htc: 1 # 6.5 # according to MMS Study
+    T_ext: 293.15
+  crystal:
+    htc: 1  # according to estimation from IKZ Jahresbericht
+    T_ext: 293.15
+  melt:
+    htc: 1 #6.5  # similar to crucible
+    T_ext: 293.15
+  inductor_inside:
+    T: 293.15
+  container_outside:
+    T: 293.15
+
+heating_induction:
+  frequency: 14.2e+3   # Hz
+  current: 100 # A
+
+smart-heater:
+  T: 900 # 1813.15 # # melting point SGMZ
+  control-point: False  # if False: use T at melt-crystal interface (triple point)
+  x: 0.006
+  y: 0.042
+  z: 0.0
+
+
+
