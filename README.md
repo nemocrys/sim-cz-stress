@@ -127,7 +127,7 @@ python3 runAll.py
 ```
 
 This will:
-1. Execute the 2D simulation in `2D/<case_name>/`
+1. Execute the 2D simulation in `2D/Csi_reference_case/`
 2. Execute the 3D simulation in `3D/` using the 2D results
 
 ## Output
