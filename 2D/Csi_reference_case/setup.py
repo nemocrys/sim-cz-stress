@@ -344,7 +344,7 @@ def simulation_pyelmer(
 
 
 if __name__ == "__main__":
-    sim_dir = "./simdata/10_reference_case_isotropic"
+    sim_dir = "./simdata/01_case"
     if os.path.exists(sim_dir):
         raise ValueError("Please remove the old simulation directory.")
 

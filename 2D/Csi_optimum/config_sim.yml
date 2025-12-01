@@ -1,0 +1,45 @@
+
+general:
+  heat_control: True
+  heat_convection: True
+  heating_induction: True
+  phase_change: True
+  v_pull: 0.2 # mm/min
+
+boundaries:
+  top_susceptor:
+    T_ext: 293.15  # K
+    htc: 4 # W/m2K
+  shield:
+    T_ext: 293.15  # K
+    htc: 4 # W/m2K
+  crucible_outside:
+    T_ext: 293.15 # K
+    htc: 4 # W/m2K
+  crystal:
+    T_ext: 293.15 # K
+    htc: 8 # W/m2K
+  melt:
+    T_ext: 293.15 # K
+    htc: 6 # W/m2K
+  inductor_inside:
+    T: 293.15 # K
+  container_outside:
+    T: 293.15 # K
+
+
+
+
+heating_induction:
+  frequency: 14.2e+3  # Hz
+  current: 100 # A
+
+smart-heater:
+  T: 900  # K
+  control-point: False  # if False: use T at melt-crystal interface (triple point)
+  x: 0.006
+  y: 0.042
+  z: 0.0
+
+
+

@@ -1,0 +1,165 @@
+# meshing settings
+mesh:
+  size_factor: 1  # use this to change mesh size globally
+  order: 2  # 2nd order is better if you want to evaluate heat fluxes
+
+# geometry parameters
+
+melt:
+  h: 0.025  # h_0 height of melt 
+  r: 0.0225
+  mesh_size: 0.0025
+  material: csi_liquid
+  T_init: 293.15 
+  
+crystal:
+  diameters : [0.004, 0.01, 0.01] 
+  lengths : [0.028, 0.009, 0.08] # vertical lengths from top to bottom
+  height_cut: 0.028
+  mesh_size: 0.00125
+  material: csi_solid
+  T_init: 293.15 
+
+crucible:
+  y0: -0.01
+  h: 0.065 #0.055
+  r_in : 0.0225 # melt
+  r_out : 0.03
+  t_bt : 0.01 #bottom thickness
+  mesh_size: 0.0025
+  material: graphite-FU8957
+  T_init: 293.15 
+
+seedholder:
+  r_in : 0.004
+  r_out: 0.0075
+  overlap: 0.008 
+  h : 0.025
+  mesh_size: 0.005
+  material: steel-1.4541
+  T_init: 293.15
+
+shaft_al2o3:
+  r: 0.004
+  overlap: 0.01
+  h: 0.108
+  mesh_size: 0.0015
+  material: al2o3
+  T_init: 293.15
+
+
+top_axis:   
+  r : 0.02
+  h : 0.061
+  mesh_size: 0.005
+  material: steel-1.4541
+  T_init: 293.15
+
+shield:
+  include : True
+  r : 0.006
+  h: 0.008 
+  y0 : 0.055
+  thickness: 0.002
+  theta : -20
+  mesh_size: 0.01
+  material: graphite-FU8957
+  T_init: 293.15
+
+top_susceptor:
+  include : True
+  r_top : 0.017
+  h: 0.087
+  t_tp : 0.0075 # as t_r
+  mesh_size: 0.01
+  material: graphite-FU8957
+  T_init: 293.15
+
+inductor_bottom:
+  d: 0.01  # construction
+  d_in: 0.008   # construction
+  g: 0.006   # averaged
+  n: 3
+  X0: [0.075, -0.0015] 
+  T_init: 293.15
+  material: copper-inductor #
+
+ind_top:
+  include : True
+inductor_top:
+
+  d: 0.01  # construction
+  d_in: 0.008   # construction
+  g: 0.006   # averaged 0.006
+  n: 3
+  X0: [0.075, 0.06]  
+  T_init: 293.15
+  material: copper-inductor #
+
+
+inner_insulation_btm:
+  include: True
+  r : 0.04
+  h: 0.01
+  mesh_size: 0.01
+  material: insulation
+  T_init: 293.15
+
+inner_insulation_side:
+  include: True
+  r_out : 0.04
+  h: 0.06 #0.005 # 0.055
+  mesh_size: 0.01
+  material: insulation
+  T_init: 293.15
+
+outer_insulation:
+  y0 : -0.035
+  t_bt: 0.015
+  t_tp : 0.015
+  r_in : 0.04
+  r_out : 0.06
+  h: 0.22
+  top_half_cut : False
+  h_top : 0.115
+  r_in_tp : 0.01
+  top_hole_y0 : 0.17
+  mesh_size: 0.01
+  material: insulation
+  T_init: 293.15
+
+
+axbot_adapter:
+  r_out : 0.05
+  h : 0.01
+  mesh_size: 0.01
+  T_init: 293.15
+  material: graphite-FU8957
+
+bottom_axis:
+  r_in : 0.0075
+  r_out : 0.02
+  h : 0.02
+  mesh_size: 0.01
+  material: steel-1.4541 
+  T_init: 293.15
+
+
+container :
+  r : 0.1315
+  h : 0.383
+  t : 0.005
+  mesh_size: 0.003
+  material: steel-1.4541 
+  T_init: 293.15
+
+atmosphere: 
+  T_init: 293.15
+  material: air
+  mesh_size: 0.05 
+  
+
+
+
+
+

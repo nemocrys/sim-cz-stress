@@ -39,7 +39,7 @@ def geometry(config, sim_dir="./", name="vgf",dir_2D="./", visualize=False, incl
     # rho_melt = 3500, rho_crystal = 3980       Al2O3
 
 
-    def new_melt_h(h , rho_melt = 3.2e+3, rho_crystal = 4.51e+3  ):  
+    def new_melt_h(h , rho_melt = 3.2e+3, rho_crystal = 4.51e+3  ):  # TODO: make this a function of material
         V_melt_f = V_cylinder(config["melt"]["h"], config["melt"]["r"]) # final
         M_melt_f = rho_melt * V_melt_f
         
@@ -55,8 +55,6 @@ def geometry(config, sim_dir="./", name="vgf",dir_2D="./", visualize=False, incl
 
     #melt_y_top_new = melt_y_top  # same level in this simulation
     #-----------------------------------------------------------------------------
-    
-    #coords_btm = get_crystal_melt_interface('./2D/2D_Csi_reference_case/simdata/05_reference_case_isotropic/results/phase-if.dat')
     coords_btm = get_crystal_melt_interface(dir_2D + '/results/phase-if.dat')
     #-----------------------------------------------------------------------------
 
@@ -139,15 +137,11 @@ def geometry(config, sim_dir="./", name="vgf",dir_2D="./", visualize=False, incl
 
 
 if __name__ == "__main__":
+
+
     sim_dir = "./"
+    dir_2D = "../2D/Csi_reference_case/simdata/01_case"
 
-
-
-    #dir_2D = "./2D/2D_Csi_reference_case/simdata/05_reference_case_isotropic"
-
-    # dir_2D = "./2D/Andrejs_plot/CsI_optimised/macplasData/length=0.090_vpull=0.2"
-
-    dir_2D = "./2D/2D_optimum_CsI_shieldAdjust/simdata/01_case"
 
     with open("config_geometry.yml") as f:
         config_geo = yaml.safe_load(f)

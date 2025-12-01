@@ -56,20 +56,6 @@ simulations = [
 
 
 
-for simulaion in simulations:
-    print(f"Starting simulation: {simulaion}")
-
-    try:
-        # sim_dir = "./simdata/11_reference_diff_heights/" +simulaion + "/"  # where 3D simulation will be stored
-        # dir_2D = "./2D/2D_Csi_reference_case/simdata/" + simulaion  # 2D simulation path
-        sim_dir = "./simdata/12_CsI_diff_heights/" +simulaion + "/"  # where 3D simulation will be stored
-        dir_2D = "./2D/Andrejs_plot/CsI_optimised/macplasData/" + simulaion  # 2D simulation path
-        # sim_dir = "./simdata/11_Ga2O3_diff_heights/" +simulaion + "/"  # where 3D simulation will be stored
-        # dir_2D = "./2D/Andrejs_plot/Ga2O3_optimised/macplasData/" + simulaion  # 2D simulation path
-        # sim_dir = "./simdata/11_Al2O3_diff_heights/" +simulaion + "/"  # where 3D simulation will be stored
-        # dir_2D = "./2D/Andrejs_plot/Al2O3_optimised/macplasData/" + simulaion  # 2D simulation path
-        os.makedirs(sim_dir, exist_ok=True)
-
         #crystal_length = 0.045
         crystal_length = extract_length(simulaion)
 

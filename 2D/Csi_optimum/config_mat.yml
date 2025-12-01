@@ -1,0 +1,187 @@
+# base material properties
+
+functions:
+  - |
+    $function heatconty(x) {_heatconty = (3.936284e-01 + 2.332041e-03 * (x- 273.15)^1 + -2.855198e-06 * (x- 273.15)^2 + 1.482131e-09 * (x- 273.15)^3) 0 \
+                                            0 (9.111736e-02 + 3.878800e-04 * (x- 273.15)^1 + -2.752193e-07 * (x- 273.15)^2 + 1.942076e-10 * (x- 273.15)^3)}
+
+csi_liquid: # Arveds case
+  Density: 3.2e+3
+  Electric Conductivity: 0.0
+  Emissivity: 0.9
+  Heat Capacity: 230
+  Heat Conductivity: 8.4  # 35 times higher, original value 0.3
+  Relative Permeability: 1
+  Relative Permittivity: 1
+  Liquid: 'Logical True'
+
+csi_solid: # Arveds case
+  Density: 4.51e+3
+  Electric Conductivity: 0.0
+  Emissivity: 0.9
+  Heat Conductivity: 7.7 # 7 times higher, original value 1.1
+  Relative Permeability: 1
+  Relative Permittivity: 1
+  Solid: 'Logical True'
+  Melting Point: 900
+  Latent Heat: 9.24e+4
+  Poisson Ratio : Real 0.256 #! E=2G(1+p) # From Kaspars
+  Reference Temperature : 900
+  Heat Expansion Coefficient : Real 5.0e-5   # From Kaspars
+  Youngs Modulus : 17.76e9  # From Kaspars
+
+  # Youngs Modulus (4, 4): |  # Units of N/m2  # From Kaspars
+  #     Real \
+  #     23.375e9  5.4e9  7.725e9    0 \
+  #     5.4e9     25.7e9 5.4e9      0 \
+  #     7.725e9   5.4e9  23.375e9   0 \
+  #     0         0      0          5.5e9 
+
+
+graphite_CZ3R6300:  # crucible, adapter      # Arveds case
+  Density: 1730.0
+  Electric Conductivity: 5.88e+4
+  Emissivity: 0.7  # 205°C
+  Heat Capacity: 1237.0
+  Heat Conductivity: 65  # 20°C
+  Relative Permeability: 1
+  Relative Permittivity: 1
+
+graphite-FU8957:  # heater    # Arveds case
+  Density: 1750.0
+  Emissivity: 0.7  # estimate based on own measurements
+  Heat Capacity: 1237.0
+  Electric Conductivity: 7.14e+4
+  # Heat Conductivity: 105  # averaged over different given values
+  Heat Conductivity:  |  # Measurement EK98 Sample #4, #5, #6
+    Variable Temperature
+      Real
+        300    114.6
+        500    94.1
+        700    78.4
+        900    66.9
+        1100    58.6
+        1300    52.9
+        1500    48.8
+        1700    45.6
+      End
+  Relative Permeability: 1
+  Relative Permittivity: 1
+
+
+copper-inductor:           #Arveds case
+  Density: 8960.0  # 0°C
+  Electric Conductivity: 0.0  # necessary for 2D
+  Emissivity: 0.2  # 327°C
+  Heat Capacity: 384.4  # interpolated for 20°C
+  Heat Conductivity: 390.0  # estimated using data sheets
+  Relative Permeability: 1
+  Relative Permittivity: 1
+
+
+
+insulation :  #Arveds case
+  Density: 220.0
+  #Electric Conductivity:  1.95e+2 
+  Electric Conductivity:  1.95e-4  # el. insulator
+  Emissivity: 0.7  # estimate based on own measurements
+  Heat Capacity: 1237.0
+  #Heat Conductivity: 0.2
+  # Heat Conductivity (2, 2): |  # Measurement, approx 600°C
+  #   Real \
+  #   1.1    0 \
+  #   0    0.3
+  Heat Conductivity (2, 2): |  # measurement, defined above in "functions" section
+    variable temperature
+        MATC "heatconty(tx)"
+  Relative Permeability: 1
+  Relative Permittivity: 1
+
+al2o3:  #Arveds case
+  Density: 3950
+  Electric Conductivity: 0.0
+  Emissivity: 0.8
+  Emissivity: |
+    Variable Temperature
+      Real
+        366    0.9
+        1073    0.623
+        1600    0.4
+      End
+  Heat Conductivity: |
+    Variable Temperature
+      Real
+        100    133
+        200    55
+        273    39.7
+        400    26.4
+        800    10
+        1000    7.8
+        1200    6.5
+        1400    5.8
+        1600    5.6
+        1800    5.6
+      End
+  Relative Permeability: 1
+  Relative Permittivity: 1
+
+
+steel-1.4541 : #Arveds case
+  Density: 7900.0  # 20°C
+  Electric Conductivity: 1.37e+6  # 20°C Ω/m
+  Emissivity: 0.2  # 200°C
+  Heat Capacity:  470.0 # 20°C
+  Heat Conductivity: 15.0 # 20°C
+  Relative Permeability: 1
+  Relative Permittivity: 1
+
+air:        #Arveds case
+  Density: 1.1885  # 20°C
+  Electric Conductivity: 0.0 
+  Heat Capacity: 1006.4  # 20°C
+  Heat Conductivity: 25.873e-3  # 20°C
+  Relative Permeability: 1
+  Relative Permittivity: 1
+
+
+SGMZ_melt:     #Tm ~1500 °C
+  Density: 5946 # kg/m**3
+  Electric Conductivity: 0.0
+  Emissivity: 0.5  # ASSUMED
+  Heat Conductivity: 1.8 # IKZ measurment
+  Heat Capacity: 1.3e+3   # from Christo
+  Relative Permeability: 1
+  Relative Permittivity: 1
+  Liquid: 'Logical True'
+
+SGMZ_crystal:
+  Density: 5946 # kg/m**3
+  Electric Conductivity: 0.0
+  Emissivity: 0.5  # ASSUMED
+  #Heat Capacity: 147  # kaspars should ask 
+  Heat Capacity: 1.3e+3   # from Christo
+  Heat Conductivity: 1.8 # IKZ measurment
+  Relative Permeability: 1
+  Relative Permittivity: 1
+  Solid: 'Logical True'
+  Melting Point: 1773.15
+  Latent Heat: 5.21e+4  # J / kg #unknown  kaspars should ask for similar materials
+  Poisson Ratio : Real 0.389 #! E=2G(1+p)
+  Youngs Modulus : Real 50e9
+  Reference Temperature : 1773.15
+  Heat Expansion Coefficient : Real 1.443e-05 #oxides wikipedia
+
+
+Iridium:  #   Tm = 2719 K # http://thermophysics.ru/pdf_doc/p757.pdf , 
+  Density: 22562 #   20°C
+  Electric Conductivity: 2380952 #Ω/m  acquired at T~1500 K
+  Emissivity: 0.54 # 1500 °C
+  Heat Capacity: 171.22  # J/(Kg K)  
+  Heat Conductivity: 102  # W/mK   1500 °C
+  Relative Permeability: 1
+  Relative Permittivity: 1
+
+
+
+
+

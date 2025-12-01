@@ -26,7 +26,7 @@ heating_induction:
   current: 100 # A
 
 smart-heater:
-  T: 900 # 1813.15 # # melting point SGMZ
+  T: 900 # 1813.15 # 
   control-point: False  # if False: use T at melt-crystal interface (triple point)
   x: 0.006
   y: 0.042

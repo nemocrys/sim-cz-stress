@@ -116,8 +116,8 @@ if __name__ == "__main__":
     # dir_2D = "./2D/Andrejs_plot/Al2O3_optimised/macplasData/length=0.060_vpull=0.033"  
     # sim_dir = "./simdata/12_reference_diff_heights_Al2O3/"
 
-    dir_2D = "./2D/2D_Csi_reference_case/simdata/05_reference_case_isotropic"  
-    sim_dir = "./simdata/13_CsI_reference_mesh_0.8/"
+    dir_2D = "../2D/Csi_reference_case/simdata/01_case"  
+    sim_dir = "./simdata/01_CsI_reference_case/"
 
     if os.path.exists(sim_dir):
         raise ValueError("Please remove the old simulation directory.")
