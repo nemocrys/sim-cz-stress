@@ -150,7 +150,7 @@ You can visualize both 2D and 3D results using [ParaView](https://www.paraview.o
 <!-- Row 1 -->
 <div style="text-align: center;">
   <p float="left">
-    <img src="figures/reference2D.png"
+    <img src="figures/CsI_reference_2D.png"
          alt="2D Temperature Distribution of the Furnace"
          width="45%" style="margin-right: 2%;" />
     <img src="figures/CsI_optimised_2D.png"
