@@ -152,7 +152,7 @@ You can visualize both 2D and 3D results using [ParaView](https://www.paraview.o
   <p float="left">
     <img src="figures/CsI_reference_2D.png"
          alt="2D Temperature Distribution of the Furnace"
-         width="45%" style="margin-right: 2%;" />
+         width="45%" style="margin-right: 6%;" />
     <img src="figures/CsI_optimised_2D.png"
          alt="2D Temperature Distribution of the Furnace (Optimum)"
          width="43.4%" />
@@ -165,7 +165,7 @@ You can visualize both 2D and 3D results using [ParaView](https://www.paraview.o
   <p float="left">
     <img src="figures/CsI_reference_3D.png"
          alt="3D Thermal Stress of the Crystal"
-         width="45%" style="margin-right: 2%;" />
+         width="45%" style="margin-right: 6%;" />
     <img src="figures/CsI_optimised_3D.png"
          alt="3D Thermal Stress of the Crystal (Optimum)"
          width="44.6%" />
