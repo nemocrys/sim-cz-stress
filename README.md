@@ -52,7 +52,7 @@ The simulation pipeline consists of the following steps:
 
 ```
 sim-cz-stress/
-├── 2D/                          # 2D simulation cases
+├── 2D/                          # 2D simulation EM-Thermal simulations
 │   ├── Csi_reference_case/      # Reference case for CsI crystal
 │   │   ├── geometry.py          # 2D geometry generation
 │   │   ├── setup.py             # 2D simulation Elmer setup
@@ -68,15 +68,15 @@ sim-cz-stress/
 │   │           └── results/     # Results (.dat, .vtu files)
 │   └── Csi_optimum/             # Optimized case for CsI crystal (same structure as reference case)
 │       └── ...                  
-├── 3D/                          # 3D Thermal stress simulations
+├── 3D/                          # 3D Thermal stress simulations 
 │   ├── geo_3D.py                # 3D geometry generation from 2D results
 │   ├── T_boundary_from2Dto3D.py # Temperature boundary condition extraction from 2D
 │   ├── setup.py                 # Elmer simulation setup
 │   ├── my_tools.py              # 3D utility functions
 │   ├── run.py                   # 3D simulation runner
-│   ├── config_geometry.yml      # Crystal geometry configuration
-│   ├── config_sim.yml           # Simulation parameters
-│   ├── config_mat.yml           # Material properties
+│   ├── config_geometry.yml      
+│   ├── config_sim.yml           
+│   ├── config_mat.yml           
 │   ├── config_elmer.yml         # Elmer solver configuration
 │   └── simdata/                 # 3D simulation output directory
 │       └── <case_name>/         # Results                   
