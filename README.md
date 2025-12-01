@@ -157,7 +157,7 @@ You can visualize both 2D and 3D results using [ParaView](https://www.paraview.o
          alt="2D Temperature Distribution of the Furnace (Optimum)"
          width="43.4%" />
   </p>
-  <em>Figure 1: 2D temperature fields for 60 mm and the entire crystal (117 mm). Reference case (left) and optimized case (right).</em>
+  <em>2D temperature fields for 60 mm and the entire crystal (117 mm). Reference case (left) and optimized case (right).</em>
 </div>
 
 <!-- Row 2 -->
@@ -170,7 +170,7 @@ You can visualize both 2D and 3D results using [ParaView](https://www.paraview.o
          alt="3D Thermal Stress of the Crystal (Optimum)"
          width="44.6%" />
   </p>
-  <em>Figure 2: 3D thermal stress fields for 60 mm and the entire crystal (117 mm). Reference case (left) and optimized case (right).</em>
+  <em>3D thermal stress fields for 60 mm and the entire crystal (117 mm). Reference case (left) and optimized case (right).</em>
 </div>
 
 
