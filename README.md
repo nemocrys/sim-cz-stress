@@ -7,14 +7,11 @@ This repository contains CsI Czochralski crystal growth cases using [Elmer](http
 - [CsI-reference case ](2D/Csi_reference_case): 2D simulation of CsI Czochralski growth
 - [CsI-optimized case ](2D/Csi_optimum): 2D simulation of optimized CsI Czochralski growth
 
-## Referencing
+### Referencing
 
 If you use this code in your research, please cite our open-access publication:
 
-### TODO:  add link to the paper 
-
-Further details can be found in:
-
+> N. Sagias, A. Sabanskis, and K. Dadzis, “ Optimization of Thermal Stresses During Czochralski Growth of Oxides and Halides.” Cryst. Res. Technol. 61, no. 1 (2026): e70061. https://doi.org/10.1002/crat.70061
 
 ## Computational setup (Docker)
 
