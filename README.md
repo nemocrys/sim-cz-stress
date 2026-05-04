@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/1073804753.svg)](https://doi.org/10.5281/zenodo.20020217)
+
 # 3D Thermal Stress Local Model
 
 This project establishes a workflow for evaluating thermal stress in a 3D crystal geometry, based on boundary conditions extracted from an earlier 2D axisymmetric simulation.
